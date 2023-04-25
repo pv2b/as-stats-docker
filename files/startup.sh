@@ -12,20 +12,17 @@ if ! [ -f /data/as-stats/conf/knownlinks ]; then
   exit 1
 fi
 
+# populate default config file for web ui if missing
+if ! [ -f /data/as-stats/config.inc ] ; then
+  cp /var/www/config.inc.dist /data/as-stats/config.inc
+fi
+
 # Set time zone
 if ! [ -v TZ ] ; then
   TZ=UTC
 fi
 cp "/usr/share/zoneinfo/$TZ" /etc/localtime
 echo "$TZ" > /etc/timezone
-
-# persistante config file web ui
-if [ -f /data/as-stats/config.inc ] ; then
-  rm /var/www/config.inc
-else
-  mv /var/www/config.inc /data/as-stats/config.inc
-fi
-ln -s /data/as-stats/config.inc /var/www/config.inc
 
 # hand over to supervisord
 exec /usr/bin/supervisord -n -c /etc/supervisord.conf

@@ -14,7 +14,9 @@ WORKDIR /root/
 RUN git clone https://github.com/manuelkasper/AS-Stats.git
 
 RUN rm -Rf /var/www/localhost && \
-    mv AS-Stats/www/* /var/www
+    mv AS-Stats/www/* /var/www && \
+    mv /var/www/config.inc /var/www/config.inc.dist && \
+    ln -s /data/as-stats/config.inc /var/www/config.inc
 
 ### NGINX + PHP81-FPM
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
