@@ -20,7 +20,3 @@ else
   mv /var/www/config.inc /data/as-stats/config.inc
   ln -s /data/as-stats/config.inc /var/www/config.inc
 fi
-
-# start first data to generate asstats_day.txt - wait 2 minutes
-sleep 120
-/usr/sbin/stats-day

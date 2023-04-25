@@ -1,1 +1,2 @@
 0	*	*	*	*	/usr/sbin/stats-day
+@reboot sleep 120 && /usr/sbin/stats-day
