@@ -35,6 +35,7 @@ ADD files/stats-day.sh /usr/sbin/stats-day
 RUN chmod +x /usr/sbin/stats-day
 
 ADD files/startup.sh /root
+ADD files/run-asstatd.sh /root
 ADD files/supervisord.conf /etc/supervisord.conf
 
 COPY --from=builder /usr/local /usr/local
