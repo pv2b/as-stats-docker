@@ -11,9 +11,10 @@ RUN apk add --no-cache supervisor nginx bash curl perl rrdtool perl-rrd perl-dbi
 WORKDIR /root/
 
 RUN git clone https://github.com/manuelkasper/AS-Stats.git
+RUN git clone https://github.com/nidebr/as-stats-gui.git
 
 RUN rm -Rf /var/www/localhost && \
-    mv AS-Stats/www/* /var/www
+    mv as-stats-gui/* /var/www
 
 ### NGINX + PHP81-FPM
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
