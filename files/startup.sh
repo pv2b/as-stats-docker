@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# lance AS-Stats
-nohup /root/run-asstatd.sh &
-
 # Mise à l'heure
 if [[ -n $TZ ]] ; then
   cp "/usr/share/zoneinfo/$TZ" /etc/localtime
@@ -20,3 +17,6 @@ else
   mv /var/www/config.inc /data/as-stats/config.inc
   ln -s /data/as-stats/config.inc /var/www/config.inc
 fi
+
+# hand over to supervisord
+exec /usr/bin/supervisord -n -c /etc/supervisord.conf

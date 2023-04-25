@@ -41,4 +41,4 @@ ADD files/supervisord.conf /etc/supervisord.conf
 COPY --from=builder /usr/local /usr/local
 
 RUN chmod +x /root/startup.sh
-ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
+ENTRYPOINT ["/root/startup.sh"]
