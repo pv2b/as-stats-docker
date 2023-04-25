@@ -1,5 +1,17 @@
 #!/bin/bash
 
+if ! [ -d /data/as-stats ]; then
+  echo "You must mount a volume to /data/as-stats!"
+  exit 1
+fi
+
+mkdir -p /data/as-stats/{conf,rrd}
+
+if ! [ -f /data/as-stats/conf/knownlinks ]; then
+  echo "You must put a knownlinks file in /data/as-stats/conf/knownlinks!"
+  exit 1
+fi
+
 # Mise à l'heure
 if [[ -n $TZ ]] ; then
   cp "/usr/share/zoneinfo/$TZ" /etc/localtime
