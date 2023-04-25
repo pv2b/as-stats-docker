@@ -60,4 +60,4 @@ fi
 
 # start first data to generate asstats_day.txt - wait 2 minutes
 sleep 120
-/root/AS-Stats/bin/rrd-extractstats.pl /data/as-stats/rrd /data/as-stats/conf/knownlinks /data/as-stats/asstats_day.txt
+/usr/sbin/stats-day
